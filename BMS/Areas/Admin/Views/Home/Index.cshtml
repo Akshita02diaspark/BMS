@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Registration>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - BMS</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<style>
+    .formCss {
+        margin-left: 23%
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 253px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        /* color: aquamarine; */
+        left: 0;
+        background-color: #adb5bd;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+        .sidenav a {
+            padding: 30px 8px 9px 45px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f8f9fa;
+            display: block;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+    .main {
+        margin-left: 160px; /* Same as the width of the sidenav */
+        font-size: 28px; /* Increased text to enable scrolling */
+        padding: 0px 10px;
+    }
+
+    .imageclass {
+        font-size: 14px;
+    }
+
+    .table{
+        margin-left:90px;
+    }
+</style>
+
+<button type="submit" class="btn btn-primary">  </button>
+
+
+
+
+
+<div class="sidenav">
+    <a href="#clients">Home</a>
+    <a asp-area="admin" asp-controller="home" asp-action="Index">All Users</a>
+    <a asp-area="admin" asp-controller="home" asp-action="ShowAllBlobs">Movies</a>
+    <a asp-area="admin" asp-controller="home" asp-action="Addmovies">Add Movies</a>
+
+
+</div>
+<ul class="navbar-nav">
+ <li class="nav-item submenu dropdown dropdown-menu-right">
+
+        <ul class="dropdown-menu ">
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Users" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+
+        </ul>
+    </li>
+</ul>
+
+
+<div class="main">
+
+    <style>
+        .movie {
+            width: 400px;
+            height: 300px;
+            margin-right: 68px;
+        }
+
+        .card-group {
+            margin-top: 20px;
+        }
+    </style>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">FirstName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model)
+            {
+
+                <tr>
+                    <th scope="row">@data.FirstName</th>
+                    <td>@data.LastName</td>
+                    <td>@data.Mobile</td>
+                    <td>@data.EmailId</td>
+                    <td>  <a asp-area="Admin" asp-controller="Home" asp-action="DeleteUser" asp-route-id=@data.ObjectId>Delete</a></td>
+                </tr>
+            }
+            </tbody>
+    </table>
+</div>
+
+
+

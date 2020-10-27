@@ -1,0 +1,49 @@
+﻿@model Movies
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="py-4">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row form-group">
+        <div class="col-md-6 formCss">
+            <div class="card">
+                <div class="card-body px-lg-5 pt-4">
+                    <form autocomplete="off" method="post" enctype="multipart/form-data" asp-area="Admin" asp-controller="Home" asp-action="Addmovies">
+                        <h3 class="col-12 text-success text-center py-4">
+                            <strong>Movies</strong>
+                        </h3>
+                        <hr />
+                        <div class="py-2 form-group">
+                            <input asp-for="MovieName" placeholder="Movie Name" class="form-control" />
+                            <span asp-validation-for="MovieName" class="text-danger"></span>
+                        </div>
+                        <div class="py-2 form-group">
+                            <input asp-for="Genre" type="text" placeholder="Genre" class="form-control" />
+                            <span asp-validation-for="Genre" class="text-danger"></span>
+                        </div>
+                        <div class="py-2 form-group">
+                            <input asp-for="Director" type="text" placeholder="Director" class="form-control" />
+                            <span asp-validation-for="Director" class="text-danger"></span>
+                        </div>
+                        <div class="py-2 form-group">
+                            <input asp-for="InitialRelease" placeholder="InitialRelease" class="form-control" />
+                            <span asp-validation-for="InitialRelease" class="text-danger"></span>
+                        </div>
+                        <div class="py-2 form-group imageclass ">
+                            <label asp-for="ImageFile" class="control-label"></label>
+                            <input asp-for="ImageFile" accept="image/*" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="py-2">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Movies>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>@ViewData["Title"] - BMS</title>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<style>
+ 
+
+    .sidenav {
+        height: 100%;
+        width: 253px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        /* color: aquamarine; */
+        left: 0;
+        background-color: #adb5bd;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+        .sidenav a {
+            padding: 30px 8px 9px 45px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f8f9fa;
+            display: block;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+    img {
+        width: 60px; 
+    }
+   
+
+    .table {
+        margin-left: 256px;
+    }
+</style>
+
+<button type="submit" class="btn btn-primary">  </button>
+
+
+
+
+
+<div class="sidenav">
+    <a href="#clients">Home</a>
+    <a asp-area="admin" asp-controller="home" asp-action="Index">All Users</a>
+    <a asp-area="admin" asp-controller="home" asp-action="ShowAllBlobs">Movies</a>
+    <a asp-area="admin" asp-controller="home" asp-action="Addmovies">Add Movies</a>
+
+
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>FileName</th>
+            <th>FileSize</th>
+            <th>ModifiedOn</th>
+
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td><img src="@data.ImageURL" /></td>
+                <td>@data.MovieName</td>
+                <td>@data.InitialRelease</td>
+                <td>@data.Genre</td>
+
+                @*<td> <a href="/Demo/Download?blobName=@data.FileName">Download</a> </td>*@
+                <td> <a href="/Admin/Home/Delete?id=@data.ObjectId">Delete</a> </td>
+                <td> <a href="/Admin/Home/Edit?id=@data.ObjectId">Edit</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
